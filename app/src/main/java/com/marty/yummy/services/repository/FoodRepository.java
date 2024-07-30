@@ -48,16 +48,18 @@ public class FoodRepository {
         return isFoodCallOngoing;
     }
 
-    public static FoodRepository getInstance() {
-        if(instance == null){
-            synchronized (FoodRepository.class){
-                if(instance == null){
-                    instance = new FoodRepository();
-                }
-            }
-        }
-        return instance;
+  public class FoodRepository {
+
+    private FoodRepository() {
     }
+    private static class Holder {
+        private static final FoodRepository INSTANCE = new FoodRepository();
+    }
+    public static FoodRepository getInstance() {
+        return Holder.INSTANCE;
+    }
+
+}
 
     public void updateCart(final AppDatabase db, FoodDetails foodDetails) {
         new UpdateCart(db).execute(foodDetails);
