@@ -19,7 +19,6 @@ import retrofit2.Response;
 
 public class FoodRepository {
 
-    private static FoodRepository instance;
     private static final String TAG = "FoodRepository";
 
     private YummyAPIServices yummyAPIServices = APIClient.getClient().create(YummyAPIServices.class);
@@ -53,7 +52,6 @@ public class FoodRepository {
     private FoodRepository() {
     }
     private static class Holder {
-        private static final FoodRepository INSTANCE = new FoodRepository();
     }
     public static FoodRepository getInstance() {
         return Holder.INSTANCE;
